@@ -12,10 +12,49 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "ros2PackageDependencies",
+          "name": "ROS2 Package Dependencies"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "helloworld.helloWorld",
-        "title": "Hello World"
+        "command": "ros2PackageDependencies.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        }
+      },
+      {
+				"command": "rtwPackageGenerator.quickInput",
+				"title": "Quick Input Samples"
+			}
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "ros2PackageDependencies.refreshEntry",
+          "when": "view == ros2PackageDependencies",
+          "group": "navigation"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./src/snippets.json"
+      }
+    ], 
+    "taskDefinitions": [
+      {
+        "type": "command",
+        "properties": {
+
+        }
       }
     ]
   },
@@ -28,14 +67,18 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.95.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
+    "@types/vscode": "^1.95.0",
     "@typescript-eslint/eslint-plugin": "^8.10.0",
     "@typescript-eslint/parser": "^8.7.0",
-    "eslint": "^9.13.0",
-    "typescript": "^5.6.3",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@rgrove/parse-xml": "^4.2.0"
   }
+  
 }
