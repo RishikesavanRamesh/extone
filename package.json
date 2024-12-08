@@ -12,6 +12,12 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+    "keybindings":[
+      {
+        "key": "shift + r",
+        "command": "rtwPackageGenerator.quickInput"
+      }
+    ],
     "views": {
       "explorer": [
         {
@@ -49,14 +55,21 @@
         "path": "./src/snippets.json"
       }
     ], 
-    "taskDefinitions": [
+		"taskDefinitions": [
       {
-        "type": "command",
+        "type": "colcon",
+        "required": [
+            "verb"
+        ],
         "properties": {
-
-        }
-      }
-    ]
+            "verb": {
+                "type": "string",
+                "description": "The colcon verb"
+            }
+        },
+        "when": "shellExecutionSupported"
+    }
+		]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -82,3 +95,7 @@
   }
   
 }
+
+
+
+
